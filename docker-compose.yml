@@ -1,0 +1,22 @@
+version : '3'
+
+# To install:   $ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+# To start:     $ docker-compose up -d
+# To stop:      $ docker-compose stop
+# To tear-down: $ docker-compose down --volumes
+
+services:
+  redis:
+    image: redis:alpine
+    container_name: ${STACK_NAME:-farmers-hub}-redis
+    networks:
+      - farmers-hub-network
+    ports:
+      - 6379:6379
+    volumes:
+      - ./volumes/redis:/bitnami/redis/data
+    restart: unless-stopped
+
+networks:
+  farmers-hub-network:
+    driver: bridge
