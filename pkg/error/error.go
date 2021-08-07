@@ -4,6 +4,11 @@ import (
 	"net/http"
 )
 
+type RequestError struct {
+	ErrorString string
+	ErrorCode   int
+}
+
 var (
 	ErrInvalidParam  = &RequestError{ErrorString: "Bad Request", ErrorCode: http.StatusBadRequest}
 	ErrInternalError = &RequestError{ErrorString: "Internal Error", ErrorCode: http.StatusInternalServerError}
@@ -11,11 +16,6 @@ var (
 	ErrUnauthorized  = &RequestError{ErrorString: "Unauthorized", ErrorCode: http.StatusUnauthorized}
 	ErrForbidden     = &RequestError{ErrorString: "Forbidden", ErrorCode: http.StatusForbidden}
 )
-
-type RequestError struct {
-	ErrorString string
-	ErrorCode   int
-}
 
 // Code returns the http error code
 func (err *RequestError) Code() int {
