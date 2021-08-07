@@ -10,6 +10,7 @@ import (
 func main() {
 	router := gin.Default()
 
+	// gin.SetMode(gin.ReleaseMode) // Production mode
 	router.Use(cors.CORS())
 
 	r.NoRoute(router)
