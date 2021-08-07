@@ -16,3 +16,13 @@ func Login(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusCreated, reqLogin)
 }
+
+func Register(c *gin.Context) {
+	var reqLogin model.LoginData
+
+	if err := c.BindJSON(&reqLogin); err != nil {
+		return
+	}
+
+	c.IndentedJSON(http.StatusCreated, reqLogin)
+}
