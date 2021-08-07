@@ -6,6 +6,8 @@ import (
 )
 
 func Routes(c *gin.Engine) {
+	c.GET("/", handler.Index)
+
 	c.GET("ping", handler.Ping)
 
 	api := c.Group("api")

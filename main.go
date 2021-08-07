@@ -11,6 +11,7 @@ func main() {
 	router := gin.Default()
 
 	// gin.SetMode(gin.ReleaseMode) // Production mode
+	router.LoadHTMLGlob("views/*")
 	router.Use(cors.CORS())
 
 	r.NoRoute(router)
