@@ -1,4 +1,4 @@
-# Farmer Hub project
+# Farmers Hub project
 
 ## Run
 
