@@ -14,15 +14,15 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusCreated, reqLogin)
+	c.IndentedJSON(http.StatusAccepted, reqLogin)
 }
 
 func Register(c *gin.Context) {
-	var reqLogin model.LoginData
+	var reqRegister model.RegisterData
 
-	if err := c.BindJSON(&reqLogin); err != nil {
+	if err := c.BindJSON(&reqRegister); err != nil {
 		return
 	}
 
-	c.IndentedJSON(http.StatusCreated, reqLogin)
+	c.IndentedJSON(http.StatusCreated, reqRegister)
 }
