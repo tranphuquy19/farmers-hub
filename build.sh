@@ -52,7 +52,8 @@ while read line; do
         exit 1
     else
         fileSize=$(find "$output_path" -printf "%s")
-        echo "Done with output file: $output_path ($fileSize bytes)"
+        fileSizeInMb=$((fileSize / 1048576)).$(( (fileSize * 1000 / 1048576) %1000 ))
+        echo "Done with output file: $output_path ($fileSizeInMb MB)"
     fi
 
     if [ $? -ne 0 ]; then
