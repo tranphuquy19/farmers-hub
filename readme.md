@@ -24,3 +24,9 @@ darwin/arm64
 windows/amd64
 windows/arm
 ```
+
+## Hot-reload
+
+- Requires Node.js installed
+- Install nodemon: `[sudo] npm install -g nodemon`
+- Start in deamon: `nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run main.go`
