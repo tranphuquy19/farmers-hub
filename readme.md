@@ -29,4 +29,4 @@ windows/arm
 
 - Requires Node.js installed
 - Install nodemon: `[sudo] npm install -g nodemon`
-- Start in deamon: `nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run main.go`
+- Start in deamon: `nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run .`
