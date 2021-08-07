@@ -3,11 +3,14 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/tranphuquy19/farmers-hub/config"
+	"github.com/tranphuquy19/farmers-hub/pkg/cors"
 	r "github.com/tranphuquy19/farmers-hub/router"
 )
 
 func main() {
 	router := gin.Default()
+
+	router.Use(cors.CORS())
 
 	r.NoRoute(router)
 	r.Routes(router)
