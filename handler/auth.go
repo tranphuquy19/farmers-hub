@@ -20,7 +20,6 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	c.Set("data", true)
 	c.JSON(http.StatusAccepted, reqLogin)
 }
 
