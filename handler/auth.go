@@ -9,7 +9,7 @@ import (
 )
 
 func Login(c *gin.Context) {
-	var reqLogin dto.LoginData
+	var reqLogin dto.LoginDTO
 
 	if err := c.ShouldBindJSON(&reqLogin); err != nil {
 		c.JSON(e.ErrorMessage(&e.RequestError{
@@ -24,7 +24,7 @@ func Login(c *gin.Context) {
 }
 
 func Register(c *gin.Context) {
-	var reqRegister dto.RegisterData
+	var reqRegister dto.RegisterDTO
 
 	if err := c.ShouldBindJSON(&reqRegister); err != nil {
 		c.JSON(e.ErrorMessage(&e.RequestError{
