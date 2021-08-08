@@ -1,8 +1,6 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/tranphuquy19/farmers-hub/config"
 	"github.com/tranphuquy19/farmers-hub/pkg/cors"
@@ -12,9 +10,7 @@ import (
 func main() {
 	router := gin.Default()
 
-	router.StaticFS("/res", http.Dir("public"))
-	router.StaticFile("/favicon.ico", "./public/favicon.ico")
-
+	router.Static("/res", "public")
 	router.LoadHTMLGlob("views/*")
 	router.Use(cors.CORS())
 
