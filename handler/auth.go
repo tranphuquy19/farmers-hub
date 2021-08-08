@@ -4,12 +4,12 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/tranphuquy19/farmers-hub/model"
+	"github.com/tranphuquy19/farmers-hub/dto"
 	e "github.com/tranphuquy19/farmers-hub/pkg/error"
 )
 
 func Login(c *gin.Context) {
-	var reqLogin model.LoginData
+	var reqLogin dto.LoginData
 
 	if err := c.ShouldBindJSON(&reqLogin); err != nil {
 		c.JSON(e.ErrorMessage(&e.RequestError{
@@ -24,7 +24,7 @@ func Login(c *gin.Context) {
 }
 
 func Register(c *gin.Context) {
-	var reqRegister model.RegisterData
+	var reqRegister dto.RegisterData
 
 	if err := c.ShouldBindJSON(&reqRegister); err != nil {
 		c.JSON(e.ErrorMessage(&e.RequestError{
