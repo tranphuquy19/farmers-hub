@@ -3,10 +3,20 @@ package handler
 import (
 	"net/http"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"github.com/tranphuquy19/farmers-hub/dto"
+	"github.com/tranphuquy19/farmers-hub/model"
 	e "github.com/tranphuquy19/farmers-hub/pkg/error"
 )
+
+var jwtKey = []byte("abcdefghijklmnopq")
+
+type Claims struct {
+	Username string `json:"username"`
+	jwt.StandardClaims
+}
 
 func Login(c *gin.Context) {
 	var reqLogin dto.LoginDTO
@@ -35,5 +45,11 @@ func Register(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, reqRegister)
+	user := model.User{
+		ID:       uuid.New().String(),
+		Username: reqRegister.Username,
+		Password: reqRegister.Password,
+	}
+
+	c.JSON(http.StatusCreated, user)
 }
