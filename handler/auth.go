@@ -9,6 +9,7 @@ import (
 	"github.com/tranphuquy19/farmers-hub/dto"
 	"github.com/tranphuquy19/farmers-hub/model"
 	e "github.com/tranphuquy19/farmers-hub/pkg/error"
+	"golang.org/x/crypto/bcrypt"
 )
 
 var jwtKey = []byte("abcdefghijklmnopq")
@@ -45,10 +46,14 @@ func Register(c *gin.Context) {
 		return
 	}
 
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(reqRegister.Password), bcrypt.DefaultCost)
+	if err != nil {
+		panic(err)
+	}
 	user := model.User{
 		ID:       uuid.New().String(),
 		Username: reqRegister.Username,
-		Password: reqRegister.Password,
+		Password: string(hashedPassword),
 	}
 
 	c.JSON(http.StatusCreated, user)
